@@ -1,0 +1,973 @@
+> show dbs
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+my_first_db  0.000GB
+testdb       0.000GB
+>
+
+
+admin        0.000GB
+config       0.000GB
+local        0.000GB
+my_first_db  0.000GB
+testdb       0.000GB
+> use my_first_db
+switched to db my_first_db
+> show collections
+students
+
+
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("6202129fe9786c98b890d490"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "updatedAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0
+}
+>
+
+
+> db.students.find({home_state:{$eq: "Washington"}}).pretty()
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0
+}
+>
+
+db.students.find({lucky_number:{$gt: 3 }}).pretty()
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0
+}
+
+
+> db.students.find({lucky_number:{$lt: 10 }}).pretty()
+{
+        "_id" : ObjectId("6202129fe9786c98b890d490"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "updatedAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0
+}
+>
+
+
+
+
+> db.students.find({ $and: [{lucky_number:{$gte: 1 }},{lucky_number:{$lte: 9 }}]}).pretty()
+{
+        "_id" : ObjectId("6202129fe9786c98b890d490"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "updatedAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0
+}
+
+
+
+
+> db.students.updateMany({lucky_number:{$gte: 1 } },{$set: {interests: ["coding","brunch","mongoDB"]}})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 4 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("6202129fe9786c98b890d490"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "updatedAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB"
+        ]
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB"
+        ]
+}
+>
+
+
+
+
+> db.students.update({name:"Neal" },{$set: {interests: ["coding","brunch","mongoDB","snowboarding"]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name:"Jack" },{$set: {interests: ["coding","brunch","mongoDB","jumping"]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name:"Jill" },{$set: {interests: ["coding","brunch","mongoDB","walking up hills"]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.update({name:"Jake" },{$set: {interests: ["coding","brunch","mongoDB","paintball"]}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.students.update({name:"jake" },{$set: {interests: ["coding","brunch","mongoDB","paintball"]}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("6202129fe9786c98b890d490"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "updatedAt" : ISODate("2022-02-08T06:50:07.987Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "jumping"
+        ]
+}
+{
+        "_id" : ObjectId("6202133fe9786c98b890d492"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:47.115Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "walking up hills"
+        ]
+}
+{
+        "_id" : ObjectId("62021341e9786c98b890d494"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:49.160Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "roofing"
+        ]
+}
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "snowboarding"
+        ]
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "paintball"
+        ]
+}
+>
+
+
+
+
+ db.students.updateOne({name:"jake" },{$push: {interests: "taxes"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.find({name: "jake"}).prettry()
+uncaught exception: TypeError: db.students.find(...).prettry is not a function :
+@(shell):1:1
+> db.students.find({name: "jake"}).prettey()
+uncaught exception: TypeError: db.students.find(...).prettey is not a function :
+@(shell):1:1
+> db.students.find({name: "jake"}).pretty()
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "paintball",
+                "taxes"
+        ]
+}
+>
+
+
+
+
+> db.students.updateOne({name:"jake" },{$pop: {interests: 1}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.students.find({name: "jake"}).pretty()
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "paintball"
+        ]
+}
+>
+
+
+
+
+> db.students.remove({home_state: "California"})
+WriteResult({ "nRemoved" : 3 })
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62021342e9786c98b890d496"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:50.993Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "snowboarding"
+        ]
+}
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "paintball"
+        ]
+}
+>
+
+
+
+
+> db.students.remove({name: "Neal"})
+WriteResult({ "nRemoved" : 1 })
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62021344e9786c98b890d498"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "updatedAt" : ISODate("2022-02-08T06:52:52.647Z"),
+        "__v" : 0,
+        "interests" : [
+                "coding",
+                "brunch",
+                "mongoDB",
+                "paintball"
+        ]
+}
+>
+
+
+
+> db.students.remove({lucky_number: {$gte: 5 }})
+WriteResult({ "nRemoved" : 4 })
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62029430f32c8272f2c26ea2"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "updatedAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "__v" : 0
+}
+>
+
+
+
+
+> db.students.updateMany({lucky_number:{$gte: 1 } },{$set: {number_of_belts: 0  }})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62029430f32c8272f2c26ea2"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "updatedAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d00f32c8272f2c26ea8"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d02f32c8272f2c26eaa"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d04f32c8272f2c26eac"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d06f32c8272f2c26eae"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+>
+
+
+
+
+> db.students.updateMany({home_state: "Washington"},{$inc:{number_of_belts: 1}})
+{ "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62029430f32c8272f2c26ea2"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "updatedAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d00f32c8272f2c26ea8"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d02f32c8272f2c26eaa"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "__v" : 0,
+        "number_of_belts" : 0
+}
+{
+        "_id" : ObjectId("62029d04f32c8272f2c26eac"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "__v" : 0,
+        "number_of_belts" : 1
+}
+{
+        "_id" : ObjectId("62029d06f32c8272f2c26eae"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "__v" : 0,
+        "number_of_belts" : 1
+
+
+
+
+> db.students.updateMany({},{$rename:{"number_of_belts":"belts_earned" }})
+{ "acknowledged" : true, "matchedCount" : 6, "modifiedCount" : 5 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("62029430f32c8272f2c26ea2"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "lucky_number" : 3,
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "updatedAt" : ISODate("2022-02-08T16:02:56.907Z"),
+        "__v" : 0,
+        "belts_earned" : 0
+}
+{
+        "_id" : ObjectId("62029d00f32c8272f2c26ea8"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "lucky_number" : 6,
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:32.572Z"),
+        "__v" : 0,
+        "belts_earned" : 0
+}
+{
+        "_id" : ObjectId("62029d02f32c8272f2c26eaa"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "lucky_number" : 9,
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:34.772Z"),
+        "__v" : 0,
+        "belts_earned" : 0
+}
+{
+        "_id" : ObjectId("62029d04f32c8272f2c26eac"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "lucky_number" : 12,
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:36.849Z"),
+        "__v" : 0,
+        "belts_earned" : 1
+}
+{
+        "_id" : ObjectId("62029d06f32c8272f2c26eae"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "lucky_number" : 15,
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "updatedAt" : ISODate("2022-02-08T16:40:38.519Z"),
+        "__v" : 0,
+        "belts_earned" : 1
+}
+
+
+
+
+> db.students.updateMany({},{$unset:{lucky_number:""}})
+{ "acknowledged" : true, "matchedCount" : 5, "modifiedCount" : 5 }
+> db.students.find({}).pretty()
+{
+        "_id" : ObjectId("6202ad06f32c8272f2c26eb0"),
+        "name" : "Jack",
+        "home_state" : "California",
+        "birthday" : {
+                "month" : 1,
+                "day" : 2,
+                "year" : 1983
+        },
+        "createdAt" : ISODate("2022-02-08T17:48:54.365Z"),
+        "updatedAt" : ISODate("2022-02-08T17:48:54.365Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202ad08f32c8272f2c26eb2"),
+        "name" : "Jill",
+        "home_state" : "California",
+        "birthday" : {
+                "month" : 2,
+                "day" : 3,
+                "year" : 1984
+        },
+        "createdAt" : ISODate("2022-02-08T17:48:56.856Z"),
+        "updatedAt" : ISODate("2022-02-08T17:48:56.856Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202ad0af32c8272f2c26eb4"),
+        "name" : "Ben",
+        "home_state" : "California",
+        "birthday" : {
+                "month" : 3,
+                "day" : 4,
+                "year" : 1985
+        },
+        "createdAt" : ISODate("2022-02-08T17:48:58.778Z"),
+        "updatedAt" : ISODate("2022-02-08T17:48:58.778Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202ad0cf32c8272f2c26eb6"),
+        "name" : "Neal",
+        "home_state" : "Washington",
+        "birthday" : {
+                "month" : 4,
+                "day" : 5,
+                "year" : 1986
+        },
+        "createdAt" : ISODate("2022-02-08T17:49:00.263Z"),
+        "updatedAt" : ISODate("2022-02-08T17:49:00.263Z"),
+        "__v" : 0
+}
+{
+        "_id" : ObjectId("6202ad0df32c8272f2c26eb8"),
+        "name" : "jake",
+        "home_state" : "Washington",
+        "birthday" : {
+                "month" : 5,
+                "day" : 6,
+                "year" : 1987
+        },
+        "createdAt" : ISODate("2022-02-08T17:49:01.777Z"),
+        "updatedAt" : ISODate("2022-02-08T17:49:01.777Z"),
+        "__v" : 0
+}
+>
